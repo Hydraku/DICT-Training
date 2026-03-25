@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Config;
+
 
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
@@ -12,6 +14,7 @@ use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
+
 
 class Filters extends BaseFilters
 {
@@ -34,7 +37,9 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'auth'          => \App\Filters\AuthFilter::class,
     ];
+
 
     /**
      * List of special required filters.
@@ -53,6 +58,8 @@ class Filters extends BaseFilters
         'before' => [
             'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
+
+
         ],
         'after' => [
             'pagecache',   // Web Page Caching
@@ -60,6 +67,7 @@ class Filters extends BaseFilters
             'toolbar',     // Debug Toolbar
         ],
     ];
+
 
     /**
      * List of filter aliases that are always
@@ -75,12 +83,14 @@ class Filters extends BaseFilters
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
+            //'auth' => \App\Filters\AuthFilter::class,
         ],
         'after' => [
             // 'honeypot',
             // 'secureheaders',
         ],
     ];
+
 
     /**
      * List of filter aliases that works on a
@@ -96,6 +106,7 @@ class Filters extends BaseFilters
      * @var array<string, list<string>>
      */
     public array $methods = [];
+
 
     /**
      * List of filter aliases that should run on any
