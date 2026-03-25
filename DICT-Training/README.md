@@ -11,3 +11,4 @@ March 25, 2026
         -json
 
     codeigniter4
+        composer create-project codeigniter4/appstarter DICT-Training
