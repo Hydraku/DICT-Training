@@ -2,6 +2,9 @@
 March 25-26, 2026
 
 ## Full stack web php
+
+### Day 1
+
 Notes:
 
     php 8.2
@@ -52,3 +55,18 @@ Notes:
 
     views\auth\login.php //login form
     register.php //register form
+
+### Day 2
+
+Notes:
+
+    API routing //routes
+    php spark make:controller Api/TaskApiController //make controller
+    use API in task controller //task controller
+    curl http://localhost:8080/api/tasks //view the html return; view all tasks
+    curl http://localhost:8080/api/tasks/4 //view the filtered return; single task
+    //postman create task and delete in the documents provided by the DICT
+
+
+    //Pagination
+    
