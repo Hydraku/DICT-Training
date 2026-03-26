@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <div class="row justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-12">
         <h2>Login</h2>
         <form action="/login" method="post">
             <?= csrf_field() ?>

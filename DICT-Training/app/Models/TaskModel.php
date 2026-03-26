@@ -48,4 +48,14 @@ class TaskModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function searchByTitle(string $search = '')
+    {
+        $builder = $this->db->table('tasks');
+
+        if (!empty($search)) {
+            $builder->like('title', $search); // Adds WHERE title LIKE '%search%'
+        }
+        return $builder->get()->getResultArray();
+    }
 }

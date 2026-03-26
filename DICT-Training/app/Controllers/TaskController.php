@@ -5,6 +5,8 @@ namespace App\Controllers;
 // use App\Controllers\BaseController;
 // use CodeIgniter\model;
 use App\Models\TaskModel;
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
 
 
 class TaskController extends BaseController
@@ -20,12 +22,19 @@ class TaskController extends BaseController
 
     public function index()
     {
+        $model  = new TaskModel();
+        $search = $this->request->getGet('search');
+
+        if (!empty($search)) {
+            $model->like('title', $search);
+        }
+
         $data = [
-            'tasks' => $this->taskModel
-                ->where('user_id', session()->get('user_id'))
-                ->orderBy('created_at', 'DESC')->findAll(),
-            'title' => 'All Tasks',
+            'tasks'  => $model->paginate(4),
+            'pager'  => $model->pager,
+            'search' => $search,
         ];
+
         return view('tasks/index', $data);
     }
 
@@ -110,4 +119,5 @@ class TaskController extends BaseController
         $this->taskModel->delete($id);
         return redirect()->to('/tasks')->with('message', 'Task deleted successfully.');
     }
+    
 }

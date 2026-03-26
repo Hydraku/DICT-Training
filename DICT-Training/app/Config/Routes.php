@@ -29,3 +29,8 @@ $routes->group('tasks', ['filter' => 'auth'],  function ($routes) {
     $routes->post('update/(:num)', 'TaskController::update/$1');
     $routes->post('delete/(:num)', 'TaskController::delete/$1'); // POST!
 });
+
+//API
+$routes->group('api', function ($routes) {
+    $routes->resource('tasks', ['controller' => 'Api\\TaskApiController']);
+});
